@@ -60,3 +60,8 @@ ORGANIZATION_KEY=<your_organization_key>
 OPENAI_API_KEY=<your_api_key>
 ```
 You will need to replace **`<your_organization_key>`** and **`<your_api_key>`** with your actual organization key and API key, respectively.
+
+## References
+
+Hagen, M., Fröbe, M., Jurk, A., & Potthast, M. (2022). _Clickbait Spoiling via Question Answering and Passage Retrieval_ (arXiv:2203.10282). arXiv. http://arxiv.org/abs/2203.10282 \
+Matthias Hagen, Maik Fröbe, Artur Jurk, & Martin Potthast. (2022). _Webis Clickbait Spoiling Corpus 2022_ (1.0.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.6362726
