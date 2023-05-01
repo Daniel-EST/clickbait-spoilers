@@ -1,4 +1,4 @@
-# Clickbait Spoiler Generation using GPT-3
+# WIP: Clickbait Spoiler Generation using GPT-3
 
 This repository contains code for fine-tuning and generating clickbait spoilers using GPT-3.
 
