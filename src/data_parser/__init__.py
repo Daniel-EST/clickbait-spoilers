@@ -7,22 +7,22 @@ import utils
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())
 
-DAVINCI_MAX_TOKENS = 2048
-DAVINCI_END_OF_PROMPT = "\n\n###\n\n"
+MAX_TOKENS = 2048 - 128 
+END_OF_PROMPT = "\n\n###\n\n"
 
 
 def __prepare_prompt(clickbait: List[str], article: List[str]) -> str:
     clickbait = "\n".join(clickbait)
     article = "\n".join(article)
-    prompt = f"Clickbait: {clickbait}\n\nArticle: {article}"
+    prompt = f"CLICKBAIT:\n\n{clickbait}\n\n\nARTICLE:\n\n{article}"
 
-    if utils.count_tokens(prompt) >= DAVINCI_MAX_TOKENS:
-        limit = DAVINCI_MAX_TOKENS - utils.count_tokens(DAVINCI_END_OF_PROMPT)
+    if utils.count_tokens(prompt) >= MAX_TOKENS:
+        limit = MAX_TOKENS - utils.count_tokens(END_OF_PROMPT)
         prompt_encoded = utils.encode_tokens(prompt)
         prompt_encoded = prompt_encoded[:limit]
         prompt = utils.decode_tokens(prompt_encoded)
 
-    return f"{prompt}{DAVINCI_END_OF_PROMPT}"
+    return f"{prompt}{END_OF_PROMPT}"
 
 
 def __prepare_completion(spoiler: List[str]) -> str:

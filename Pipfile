@@ -9,6 +9,9 @@ jsonlines = "*"
 matplotlib = "*"
 numpy = "*"
 tiktoken = "*"
+evaluate = "*"
+transformers = "*"
+nltk = "*"
 
 [dev-packages]
 pylint = "*"
