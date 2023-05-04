@@ -12,6 +12,8 @@ tiktoken = "*"
 evaluate = "*"
 transformers = "*"
 nltk = "*"
+bert-score = "*"
+torch = "*"
 
 [dev-packages]
 pylint = "*"
