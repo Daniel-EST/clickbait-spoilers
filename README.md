@@ -1,4 +1,4 @@
-# WIP: Clickbait Spoiler Generation using GPT-3
+# Clickbait Spoiler Generation using GPT-3
 
 This repository contains code for fine-tuning and generating clickbait spoilers using GPT-3.
 
@@ -61,37 +61,50 @@ OPENAI_API_KEY=<your_api_key>
 ```
 You will need to replace **`<your_organization_key>`** and **`<your_api_key>`** with your actual organization key and API key, respectively.
 
+### Model Evaluation
+
+In order to evaluate the performance of our model, we used three popular metrics: Meteor, BLEU-4, and BERTscore. The results are as follows:
+
+- Meteor: 0.3958
+- BLEU-4: 0.3085
+- BERTscore Mean F1: 0.8931
+
 
 ### Example
 
-**CLICKBAIT**:
+You can find all the predicted data in the following folders:
 
-A woman who interviewed over 100 people at Goldman Sachs says there's one question she always hoped candidates would ask her, but they never did
+- `./data/results/test.txt`
+- `./data/results/validation.txt`
+
+For example, you can check the predicted results for the test dataset in the file test.txt and the predicted results for the validation dataset in the file validation.txt. By analyzing these predicted results, you can gain insights into how well the model is performing and identify areas for improvement.
+
+**CLICKBAIT:**
+
+J.J. Abrams has an answer on if there will be a post-credits scene in the new 'Star Wars'
 
 
-**ARTICLE**:
+**ARTICLE:**
 
-At some point toward the end of every job interview, the hiring manager will likely turn the tables and ask, "Do you have any questions for me?"
-This is the time to ask smart, thoughtful questions — perhaps your final opportunity to assess whether the job would be a good fit, and your final chance to impress the hiring manager.
-Business Insider recently spoke with Becca Brown, cofounder of Solemates, a brand of women's shoe-care products, who knows a thing or two about interviewing.
-Before launching her own business, Brown, who has a bachelor's from Harvard University and an MBA from Columbia, spent a lot of time interviewing job candidates at Goldman Sachs, where she held various roles, including analyst, wealth adviser, and chief of staff.
-She was also part of the investment bank's Harvard recruiting team, she says.
-"I interviewed anywhere from 20 to 30 job candidates a year, so in total, I interviewed over 100 people at Goldman Sachs," she tells Business Insider.
-She says that candidates asked her some impressive questions — like "What's the most challenging part of your job?" and "What's one of the most interesting projects you've worked on?" — but there was one question she always hoped she'd be asked, but almost never was: "Where do you see yourself in five years?"
-"I like this question — and yet no one ever asked it — because it's difficult to answer," she says. "It's an important question for anyone to be asking him or herself, and so if ever a candidate were to ask this question, it would have stood out."
-She continues:
-I think this is a good question for interviewees to ask because, as a candidate, if you see where the person interviewing you is headed, you can decide if that trajectory is in line with your career objectives. While they don't have to be completely correlated, it's helpful for the candidate to have some indication of the interviewer's direction.
-Get the latest Goldman Sachs stock price here.
+In the modern blockbuster world, post-credits scenes have become very popular. The films made by Marvel Studios are arguably best known for it, but fun stingers have also been found in the "X-Men" franchise movies as well as the latest "Terminator." Because of this, some have wondered if this could be something new for the "Star Wars" series as well... but now J.J. Abrams has definitely put an end to that conversation.
+The subject came up when Abrams was on stage for a "Star Wars: The Force Awakens" press conference held today in Los Angeles. The filmmaker was directly asked if fans can expect to see a post-credits scene or Easter Egg at the end of the sequel, and he quickly dismissed the idea, saying:
+"No, there’s not. All the scenes are actually in the movie."
+Those of you who have been following updates and stories about "Star Wars: The Force Awakens" for a while will note that this dispels a rumor that has been going around for the last few months. Back in September it was rumored that the latest saga film would actually be teasing the first "Star Wars" story, "Rogue One." This made a degree of sense, given that the Gareth Edwards-directed feature has been filming since this past summer, and will surely have a good amount of footage ready by the time "Force Awakens" arrives in theaters. Now it sounds like that post-credits scene definitely isn’t happening – so instead maybe we can just expect the blockbuster to come with a trailer for the eighth live-action "Star Wars" movie during the coming attractions.
+Post-credits scenes are definitely fun for fans, and a good incentive to get people to stick around and watch the credits – but I can’t say that I’m too upset that "Star Wars: The Force Awakens" won’t have one. After all, they aren’t exactly part of the franchise’s tradition (none of the previous movies have stingers), and it’s not a device that has to be used all over Hollywood. If everything the movie has to say can be fit between the opening scrawl and the end credits, more power to it.
+Surely there will be some fans who will be disappointed by this news, but hopefully they’ll all get over it fairly quickly. After all, the feelings about the lack of a post-credits scene should be drowned out by the excitement that comes with the fact that we’re now less than two weeks away from the theatrical release of "Star Wars: The Force Awakens." As always, stay tuned for more about the movie, including our on-camera interviews with the cast and J.J. Abrams!
 
-###
+---
 
-**Expected Spoiler**: "Where do you see yourself in five years?";
+**Expected Spoiler:**
+All the scenes are actually in the movie
 
-**Spoiler Predicted**: "Where do you see yourself in five years?";
+**Spoiler Predicted:**
+No
 
-**Metrics**:
-- Meteor: 0.9996243425995492;
-- BLEU-4: 1.0;
+## TODO
+- Compare with other models (BERT);
+- Consider training the model with a more robust algorithm like Curie or Babbage
+
 
 ## References
 
