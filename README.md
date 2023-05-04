@@ -61,6 +61,38 @@ OPENAI_API_KEY=<your_api_key>
 ```
 You will need to replace **`<your_organization_key>`** and **`<your_api_key>`** with your actual organization key and API key, respectively.
 
+
+### Example
+
+**CLICKBAIT**:
+
+A woman who interviewed over 100 people at Goldman Sachs says there's one question she always hoped candidates would ask her, but they never did
+
+
+**ARTICLE**:
+
+At some point toward the end of every job interview, the hiring manager will likely turn the tables and ask, "Do you have any questions for me?"
+This is the time to ask smart, thoughtful questions — perhaps your final opportunity to assess whether the job would be a good fit, and your final chance to impress the hiring manager.
+Business Insider recently spoke with Becca Brown, cofounder of Solemates, a brand of women's shoe-care products, who knows a thing or two about interviewing.
+Before launching her own business, Brown, who has a bachelor's from Harvard University and an MBA from Columbia, spent a lot of time interviewing job candidates at Goldman Sachs, where she held various roles, including analyst, wealth adviser, and chief of staff.
+She was also part of the investment bank's Harvard recruiting team, she says.
+"I interviewed anywhere from 20 to 30 job candidates a year, so in total, I interviewed over 100 people at Goldman Sachs," she tells Business Insider.
+She says that candidates asked her some impressive questions — like "What's the most challenging part of your job?" and "What's one of the most interesting projects you've worked on?" — but there was one question she always hoped she'd be asked, but almost never was: "Where do you see yourself in five years?"
+"I like this question — and yet no one ever asked it — because it's difficult to answer," she says. "It's an important question for anyone to be asking him or herself, and so if ever a candidate were to ask this question, it would have stood out."
+She continues:
+I think this is a good question for interviewees to ask because, as a candidate, if you see where the person interviewing you is headed, you can decide if that trajectory is in line with your career objectives. While they don't have to be completely correlated, it's helpful for the candidate to have some indication of the interviewer's direction.
+Get the latest Goldman Sachs stock price here.
+
+###
+
+**Expected Spoiler**: "Where do you see yourself in five years?";
+
+**Spoiler Predicted**: "Where do you see yourself in five years?";
+
+**Metrics**:
+- Meteor: 0.9996243425995492;
+- BLEU-4: 1.0;
+
 ## References
 
 Hagen, M., Fröbe, M., Jurk, A., & Potthast, M. (2022). _Clickbait Spoiling via Question Answering and Passage Retrieval_ (arXiv:2203.10282). arXiv. http://arxiv.org/abs/2203.10282 \
