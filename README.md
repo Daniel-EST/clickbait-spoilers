@@ -100,7 +100,7 @@ Surely there will be some fans who will be disappointed by this news, but hopefu
 **Expected Spoiler:**
 All the scenes are actually in the movie
 
-**Spoiler Predicted:**
+**Predicted Spoiler:**
 No
 
 ## TODO
