@@ -95,13 +95,15 @@ Those of you who have been following updates and stories about "Star Wars: The F
 Post-credits scenes are definitely fun for fans, and a good incentive to get people to stick around and watch the credits – but I can’t say that I’m too upset that "Star Wars: The Force Awakens" won’t have one. After all, they aren’t exactly part of the franchise’s tradition (none of the previous movies have stingers), and it’s not a device that has to be used all over Hollywood. If everything the movie has to say can be fit between the opening scrawl and the end credits, more power to it.
 Surely there will be some fans who will be disappointed by this news, but hopefully they’ll all get over it fairly quickly. After all, the feelings about the lack of a post-credits scene should be drowned out by the excitement that comes with the fact that we’re now less than two weeks away from the theatrical release of "Star Wars: The Force Awakens." As always, stay tuned for more about the movie, including our on-camera interviews with the cast and J.J. Abrams!
 
----
+\#\#\#
 
 **Expected Spoiler:**
 All the scenes are actually in the movie
 
 **Predicted Spoiler:**
 No
+
+---
 
 ## TODO
 - Compare with other models (BERT);
