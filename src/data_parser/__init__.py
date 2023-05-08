@@ -1,5 +1,6 @@
 import logging
 import jsonlines
+import json
 import random
 from typing import List
 
@@ -57,12 +58,13 @@ def prepare_data_to_fine_tune_openai(input_path: str, output_path: str, openai_m
 
 def prepare_data_to_fine_tune_bert(input_path: str, output_path: str) -> None:
     with jsonlines.open(input_path, "r") as reader:
-        with jsonlines.open(output_path, "w") as writer:
+        with open(output_path, "w") as writer:
             for line in reader:
                 writer.write({
                     "clickbait": "\n".join(line["postText"]),
                     "text": "\n".join(line["targetParagraphs"]),
-                    "spoiler": "\n".join(line["spoiler"])
+                    "spoiler": "\n".join(line["spoiler"]),
+                    "spoiler_pos": line["spoilerPositions"]
                 })
 
 
