@@ -104,7 +104,7 @@ All the scenes are actually in the movie
 No
 
 ## TODO
-- Compare with other models (BERT);
+- Compare with other models (BERT, GPT-2, ...);
 - Consider training the model with a more robust algorithm like Curie or Babbage
 
 
