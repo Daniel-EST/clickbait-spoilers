@@ -56,15 +56,23 @@ def prepare_data_to_fine_tune_openai(input_path: str, output_path: str, openai_m
                 })
 
 
+def __count_absolute_answer_start(paragraphs: List[str], relative_answer_start: List[int]) -> int:
+    return sum(map(len, paragraphs[:relative_answer_start[0][0]])) + relative_answer_start[0][1] + relative_answer_start[0][0]
+
+
 def prepare_data_to_fine_tune_bert(input_path: str, output_path: str) -> None:
     with jsonlines.open(input_path, "r") as reader:
-        with open(output_path, "w") as writer:
+        with jsonlines.open(output_path, "w") as writer:
             for line in reader:
                 writer.write({
-                    "clickbait": "\n".join(line["postText"]),
-                    "text": "\n".join(line["targetParagraphs"]),
-                    "spoiler": "\n".join(line["spoiler"]),
-                    "spoiler_pos": line["spoilerPositions"]
+                    "uuid": line["uuid"],
+                    "type": line["tags"][0],
+                    "context": " ".join(line["targetParagraphs"]),
+                    "question": " ".join(line["postText"]),
+                    "answers": {
+                        "text": line["spoiler"],
+                        "answer_start": [__count_absolute_answer_start(line["targetParagraphs"], spoiler_pos) for spoiler_pos in line["spoilerPositions"]]
+                    }
                 })
 
 
