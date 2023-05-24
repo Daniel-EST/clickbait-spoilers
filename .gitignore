@@ -35,3 +35,4 @@ venv.bak/
 # Tensorflow logs and checkpoints
 logs/
 checkpoints/
+src/models/bert/*
