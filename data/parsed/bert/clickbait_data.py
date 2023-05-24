@@ -55,6 +55,6 @@ class ClickbaitSpoiler(datasets.GeneratorBasedBuilder):
         ]
 
     def _generate_examples(self, filepath):
-        with jsonlines.open(filepath[0]) as f:
-            for example in f:
-                yield example["id"], example
+        with jsonlines.open(filepath[0]) as reader:
+            for line in reader:
+                yield line["id"], line

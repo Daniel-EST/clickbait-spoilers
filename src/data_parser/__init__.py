@@ -1,7 +1,8 @@
 import logging
-import jsonlines
 import random
 from typing import List
+
+import jsonlines
 
 import utils.openai as openai
 
