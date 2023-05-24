@@ -1,6 +1,10 @@
 import logging
+import time
+from typing import List, Dict
 
 import openai
+import jsonlines
+
 from data_parser import OPENAI_END_OF_COMPLETION, OPENAI_MAX_TOKENS_COMPLETION
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())
@@ -12,7 +16,21 @@ FREQUENCY_PENALY = 0.0
 STOP = [OPENAI_END_OF_COMPLETION]
 
 
-def predict(clickbait: str, model_id: str) -> str:
+def read_data(dataset_path: str) -> Dict[str, List[str]]:
+    data = {
+        "prompts": [],
+        "completions": []
+    }
+    with jsonlines.open(dataset_path, "r") as reader:
+        for line in reader:
+            data["prompts"].append(line["prompt"])
+            data["completions"].append(
+                line["completion"].replace(STOP[0], "").strip()
+            )
+    return data
+
+
+def _predict(clickbait: str, model_id: str) -> str:
     results = openai.Completion.create(
         prompt=clickbait,
         model=model_id,
@@ -23,3 +41,21 @@ def predict(clickbait: str, model_id: str) -> str:
         stop=STOP
     )
     return [result.text.strip() for result in results.choices]
+
+
+def predict(prompts: str, model_id: str, sleep_time: float = 1.0) -> List[str]:
+    predictions = []
+    for prompt in prompts:
+        predictions.append(_predict(prompt, model_id))
+        time.sleep(sleep_time)
+    return predictions
+
+
+def write_results(prompts: List[str], completions: List[str], predictions: List[str], output_path: str) -> None:
+    with jsonlines.open(output_path, "w") as writer:
+        for prompt, completion, prediction in zip(prompts, completions, predictions):
+            writer.write({
+                "clickbait": prompt,
+                "expected": completion,
+                "prediction": prediction
+            })
