@@ -1,5 +1,9 @@
+import logging
+
 import openai
 from data_parser import OPENAI_END_OF_COMPLETION, OPENAI_MAX_TOKENS_COMPLETION
+
+logging.getLogger(__name__).addHandler(logging.NullHandler())
 
 TEMPERATURE = 0.07
 MAX_TOKENS = OPENAI_MAX_TOKENS_COMPLETION
@@ -18,4 +22,4 @@ def predict(clickbait: str, model_id: str) -> str:
         frequency_penalty=FREQUENCY_PENALY,
         stop=STOP
     )
-    return [ result.text.strip() for result in results.choices ]
+    return [result.text.strip() for result in results.choices]

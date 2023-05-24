@@ -1,6 +1,9 @@
+import logging
 from typing import List
 
 import tiktoken
+
+logging.getLogger(__name__).addHandler(logging.NullHandler())
 
 OPENAI_MODEL_FINE_TUNING_PRICING = {
     "ada": 0.0004,

@@ -1,6 +1,5 @@
 import logging
 import jsonlines
-import json
 import random
 from typing import List
 
@@ -65,7 +64,7 @@ def prepare_data_to_fine_tune_bert(input_path: str, output_path: str) -> None:
         with jsonlines.open(output_path, "w") as writer:
             for line in reader:
                 writer.write({
-                    "uuid": line["uuid"],
+                    "id": line["uuid"],
                     "type": line["tags"][0],
                     "context": " ".join(line["targetParagraphs"]),
                     "question": " ".join(line["postText"]),
