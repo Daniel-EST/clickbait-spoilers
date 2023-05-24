@@ -39,7 +39,7 @@ class ClickbaitSpoiler(datasets.GeneratorBasedBuilder):
             ],
         )
 
-    def _split_generators(self, dl_manager):  # datasets.DownloadManager._download
+    def _split_generators(self, dl_manager):
         downloaded_files = dl_manager.download({
             "train": self.config.data_files["train"],
             "test": self.config.data_files["test"],
