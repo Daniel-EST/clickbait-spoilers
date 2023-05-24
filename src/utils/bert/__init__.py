@@ -7,6 +7,7 @@ from transformers import AutoTokenizer, TFAutoModelForQuestionAnswering
 from tqdm.auto import tqdm
 
 
+SQUAD = evaluate.load("squad")
 METEOR = evaluate.load("meteor")
 BLEU = evaluate.load("bleu")
 # BERTSCORE = evaluate.load("bertscore")
@@ -150,8 +151,13 @@ def compute_metrics(start_logits, end_logits, features, examples):
     theoretical_answers = [
         {"id": ex["id"], "answers": ex["answers"]} for ex in examples]
 
+    p_answers = [predicted["prediction_text"]
+                 for predicted in predicted_answers]
+    t_answers = [expected["answers"] for expected in theoretical_answers]
+
     return {
-        "meteor": METEOR.compute(predictions=predicted_answers, references=theoretical_answers),
-        "bleu": BLEU.compute(predictions=predicted_answers, references=theoretical_answers),
-        # "bertscore": BERTSCORE.compute(predictions=predicted_answers, references=theoretical_answers, lang="en"),
+        "squad": SQUAD.compute(predictions=predicted_answers, references=theoretical_answers),
+        "meteor": METEOR.compute(predictions=p_answers, references=t_answers),
+        # "bleu": BLEU.compute(predictions=p_answers, references=t_answers),
+        # "bertscore": BERTSCORE.compute(predictions=p_answers, references=t_answers),
     }
