@@ -10,10 +10,11 @@ from tqdm.auto import tqdm
 SQUAD = evaluate.load("squad")
 METEOR = evaluate.load("meteor")
 BLEU = evaluate.load("bleu")
-# BERTSCORE = evaluate.load("bertscore")
+BERTSCORE = evaluate.load("bertscore")
 
 
-MODEL_CHECKPOINT = "distilbert-base-uncased-distilled-squad"
+# MODEL_CHECKPOINT = "distilbert-base-uncased-distilled-squad"
+MODEL_CHECKPOINT = "deepset/deberta-v3-base-squad2"
 MAX_LEN = 384
 STRIDE = 128
 
@@ -159,5 +160,5 @@ def compute_metrics(start_logits, end_logits, features, examples):
         "squad": SQUAD.compute(predictions=predicted_answers, references=theoretical_answers),
         "meteor": METEOR.compute(predictions=p_answers, references=t_answers),
         # "bleu": BLEU.compute(predictions=p_answers, references=t_answers),
-        # "bertscore": BERTSCORE.compute(predictions=p_answers, references=t_answers),
+        "bertscore": BERTSCORE.compute(predictions=p_answers, references=t_answers, lang="en"),
     }

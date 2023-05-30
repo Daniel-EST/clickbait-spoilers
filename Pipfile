@@ -16,6 +16,7 @@ bert-score = "*"
 torch = "*"
 tensorflow = "*"
 datasets = "*"
+jupyterlab = "*"
 
 [dev-packages]
 pylint = "*"
