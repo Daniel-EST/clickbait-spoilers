@@ -3,7 +3,7 @@ from collections import defaultdict
 
 import evaluate
 import numpy as np
-from transformers import AutoTokenizer, TFAutoModelForQuestionAnswering
+from transformers import AutoTokenizer
 from tqdm.auto import tqdm
 
 
@@ -13,7 +13,8 @@ BLEU = evaluate.load("bleu")
 # BERTSCORE = evaluate.load("bertscore")
 
 
-MODEL_CHECKPOINT = "distilbert-base-uncased-distilled-squad"
+# MODEL_CHECKPOINT = "distilbert-base-uncased-distilled-squad"
+MODEL_CHECKPOINT = "deepset/deberta-v3-base-squad2"
 MAX_LEN = 384
 STRIDE = 128
 
