@@ -14,14 +14,14 @@ transformers = "*"
 nltk = "*"
 bert-score = "*"
 torch = "*"
-tensorflow = "*"
 datasets = "*"
 
 [dev-packages]
 pylint = "*"
 autopep8 = "*"
 ipykernel = "*"
-pandas = "*"
+tensorflow-macos = "2.9.2"
+tensorflow-metal = "0.5.0"
 
 [requires]
 python_version = "3.11"
