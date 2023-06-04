@@ -154,7 +154,8 @@ def compute_metrics(start_logits, end_logits, features, examples):
 
     p_answers = [predicted["prediction_text"]
                  for predicted in predicted_answers]
-    t_answers = [expected["answers"] for expected in theoretical_answers]
+    t_answers = [expected["answers"]["text"][0]
+                 for expected in theoretical_answers]
 
     return {
         "SQUAD": SQUAD.compute(predictions=predicted_answers, references=theoretical_answers),
