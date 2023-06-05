@@ -15,6 +15,15 @@ nltk = "*"
 bert-score = "*"
 torch = "*"
 datasets = "*"
+accelerate = "*"
+appdirs = "*"
+loralib = "*"
+bitsandbytes = "*"
+black = {extras = ["jupyter"], version = "*"}
+fire = "*"
+peft = {git = "https://github.com/huggingface/peft.git"}
+sentencepiece = "*"
+gradio = "*"
 
 [dev-packages]
 pylint = "*"

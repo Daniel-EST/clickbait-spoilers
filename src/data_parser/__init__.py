@@ -76,6 +76,19 @@ def prepare_data_to_fine_tune_bert(input_path: str, output_path: str) -> None:
                 })
 
 
+def prepare_data_to_fine_tune_llama(input_path: str, output_path: str) -> None:
+    with jsonlines.open(input_path, "r") as reader:
+        with jsonlines.open(output_path, "w") as writer:
+            for line in reader:
+                writer.write({
+                    "id": line["uuid"],
+                    "type": line["tags"][0],
+                    "input": " ".join(line["targetParagraphs"]),
+                    "instruction": " ".join(line["postText"]),
+                    "output": " ".join(line["spoiler"])
+                })
+
+
 def prepare_split_data(input_path: str, output_folder: str, split_size: float = 0.75) -> None:
     output_test_path = f"{output_folder}/test.jsonl"
     output_val_path = f"{output_folder}/validation.jsonl"
