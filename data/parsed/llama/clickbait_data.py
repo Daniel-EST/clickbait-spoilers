@@ -20,14 +20,9 @@ class ClickbaitSpoiler(datasets.GeneratorBasedBuilder):
                 {
                     "id": datasets.Value("string"),
                     "type": datasets.Value("string"),
-                    "context": datasets.Value("string"),
-                    "question": datasets.Value("string"),
-                    "answers": datasets.features.Sequence(
-                        {
-                            "text": datasets.Value("string"),
-                            "answer_start": datasets.Value("int32"),
-                        }
-                    ),
+                    "input": datasets.Value("string"),
+                    "instruction": datasets.Value("string"),
+                    "output": datasets.Value("string")
                 }
             ),
             supervised_keys=None,

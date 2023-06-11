@@ -56,6 +56,25 @@ def prepare_data_to_fine_tune_openai(input_path: str, output_path: str, openai_m
                 })
 
 
+def prepare_validation_data_openai(input_path: str, output_path: str, openai_model: str) -> None:
+    with jsonlines.open(input_path, "r") as reader:
+        with jsonlines.open(output_path, "w") as writer:
+            for line in reader:
+                prompt = __prepare_prompt_openai(
+                    line["postText"],
+                    line["targetParagraphs"],
+                    openai_model
+                )
+                completion = __prepare_completion_openai(
+                    line["spoiler"], openai_model)
+                writer.write({
+                    "id": line["uuid"],
+                    "prompt": prompt,
+                    "completion": completion,
+                    "type": line["tags"][0]
+                })
+
+
 def __count_absolute_answer_start(paragraphs: List[str], relative_answer_start: List[int]) -> int:
     return sum(map(len, paragraphs[:relative_answer_start[0][0]])) + relative_answer_start[0][1] + relative_answer_start[0][0]
 

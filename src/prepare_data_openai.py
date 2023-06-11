@@ -15,10 +15,16 @@ def prepare(**kwargs) -> None:
     input_path = kwargs["input"]
     output_path = kwargs["output"]
     openai_model = kwargs["model"]
+    validation = kwargs["validation"]
     if not openai_model:
         openai_model = OPENAI_MODEL
-    data_parser.prepare_data_to_fine_tune_openai(
-        input_path, output_path, openai_model)
+
+    if not validation:
+        data_parser.prepare_data_to_fine_tune_openai(
+            input_path, output_path, openai_model)
+    else:
+        data_parser.prepare_validation_data_openai(
+            input_path, output_path, openai_model)
 
 
 if __name__ == "__main__":
@@ -29,5 +35,7 @@ if __name__ == "__main__":
                            help="JSONL file to be save containing prompt-completion examples for training.")
     argparser.add_argument("-m", "--model", type=str, default="",
                            help="OpenAI model name.")
+    argparser.add_argument("--validation", type=bool, default=False,
+                           help="Is validation data.")
     args = vars(argparser.parse_args())
     prepare(**args)

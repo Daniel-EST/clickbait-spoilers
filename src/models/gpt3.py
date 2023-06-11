@@ -16,17 +16,16 @@ FREQUENCY_PENALY = 0.0
 STOP = [OPENAI_END_OF_COMPLETION]
 
 
-def read_data(dataset_path: str) -> Dict[str, List[str]]:
-    data = {
-        "prompts": [],
-        "completions": []
-    }
+def read_data(dataset_path: str) -> List[Dict[str, str]]:
+    data = []
     with jsonlines.open(dataset_path, "r") as reader:
         for line in reader:
-            data["prompts"].append(line["prompt"])
-            data["completions"].append(
-                line["completion"].replace(STOP[0], "").strip()
-            )
+            data.append({
+                "id": line["id"],
+                "prompt": line["prompt"],
+                "completion": line["completion"].replace(STOP[0], "").strip(),
+                "type": line["type"]
+            })
     return data
 
 
@@ -49,13 +48,3 @@ def predict(prompts: str, model_id: str, sleep_time: float = 1.0) -> List[str]:
         predictions.append(_predict(prompt, model_id))
         time.sleep(sleep_time)
     return predictions
-
-
-def write_results(prompts: List[str], completions: List[str], predictions: List[str], output_path: str) -> None:
-    with jsonlines.open(output_path, "w") as writer:
-        for prompt, completion, prediction in zip(prompts, completions, predictions):
-            writer.write({
-                "clickbait": prompt,
-                "expected": completion,
-                "prediction": prediction
-            })
