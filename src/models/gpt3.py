@@ -22,9 +22,9 @@ def read_data(dataset_path: str) -> List[Dict[str, str]]:
         for line in reader:
             data.append({
                 "id": line["id"],
+                "type": line["type"],
                 "prompt": line["prompt"],
-                "completion": line["completion"].replace(STOP[0], "").strip(),
-                "type": line["type"]
+                "completion": line["completion"].replace(STOP[0], "").strip()
             })
     return data
 
