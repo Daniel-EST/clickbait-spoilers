@@ -159,7 +159,7 @@ def compute_metrics(start_logits, end_logits, features, examples):
 
     return {
         "SQUAD": SQUAD.compute(predictions=predicted_answers, references=theoretical_answers),
-        "Meteor": METEOR.compute(predictions=p_answers, references=t_answers),
+        "Meteor": METEOR.compute(predictions=p_answers, references=t_answers, gamma=0, beta=0),
         "BLEU-4": BLEU.compute(predictions=p_answers, references=t_answers),
         "BERTscore": BERTSCORE.compute(predictions=p_answers, references=t_answers, lang="en", model_type="microsoft/deberta-base")
     }
