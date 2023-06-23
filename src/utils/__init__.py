@@ -1,20 +1,33 @@
-from typing import List
+from typing import List, Dict
 
-import tiktoken
-
-GPT_TOKENIZER = "r50k_base"
+import csv
 
 
-def count_tokens(text: str) -> int:
-    encoding = tiktoken.get_encoding(GPT_TOKENIZER)
-    return len(encoding.encode(text))
+def write_results(output_path: str, data: List[Dict[str, str | float]]) -> None:
+    with open(output_path, "w", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=list(
+            data[0].keys()), delimiter=";")
+        writer.writeheader()
+        for row in data:
+            try:
+                row["prompt"] = row["prompt"].replace("\n", "")
+            except KeyError:
+                pass
+            try:
+                row["prediction"] = row["prediction"].replace("\n", "")
+            except KeyError:
+                pass
+            try:
+                row["completion"] = row["completion"].replace("\n", "")
+            except KeyError:
+                pass
+            writer.writerow(row)
 
 
-def encode_tokens(text: str) -> int:
-    encoding = tiktoken.get_encoding(GPT_TOKENIZER)
-    return encoding.encode(text)
-
-
-def decode_tokens(tokens: List[int]) -> int:
-    encoding = tiktoken.get_encoding(GPT_TOKENIZER)
-    return encoding.decode(tokens)
+def read_results(file_path: str) -> List[Dict[str, str | float]]:
+    results = []
+    with open(file_path, "r", encoding="utf-8") as file:
+        reader = csv.DictReader(file, delimiter=";")
+        for row in reader:
+            results.append(row)
+    return results

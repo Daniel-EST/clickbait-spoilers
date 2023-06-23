@@ -14,12 +14,23 @@ transformers = "*"
 nltk = "*"
 bert-score = "*"
 torch = "*"
+datasets = "*"
+accelerate = "*"
+appdirs = "*"
+loralib = "*"
+bitsandbytes = "*"
+black = {extras = ["jupyter"], version = "*"}
+fire = "*"
+peft = {git = "https://github.com/huggingface/peft.git"}
+sentencepiece = "*"
+gradio = "*"
 
 [dev-packages]
 pylint = "*"
 autopep8 = "*"
 ipykernel = "*"
-pandas = "*"
+tensorflow-macos = "2.9.2"
+tensorflow-metal = "0.5.0"
 
 [requires]
 python_version = "3.11"

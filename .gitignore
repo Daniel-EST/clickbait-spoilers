@@ -31,3 +31,8 @@ venv.bak/
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+# Tensorflow logs and checkpoints
+logs/
+checkpoints/
+src/models/bert/*

@@ -1,0 +1,3 @@
+[submodule "src/models/llama/alpaca-lora"]
+	path = src/models/llama/alpaca-lora
+	url = https://github.com/tloen/alpaca-lora
