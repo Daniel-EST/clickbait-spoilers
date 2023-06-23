@@ -106,8 +106,9 @@ No
 ---
 
 ## TODO
-- Compare with other models (BERT, GPT-2, ...);
+- Compare with other models (BERT, GPT-2, LLaMA...);
 - Consider training the model with a more robust algorithm like Curie or Babbage
+- Finetune GPT-3
 
 
 ## References
