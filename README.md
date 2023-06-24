@@ -101,7 +101,7 @@ Surely there will be some fans who will be disappointed by this news, but hopefu
 All the scenes are actually in the movie
 
 **Predicted Spoiler:**
-No
+No, there’s not.
 
 ---
 
